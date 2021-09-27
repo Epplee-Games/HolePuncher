@@ -110,8 +110,10 @@ class Session:
 		# print("Client %c registered for Session %s" % client.name, self.id)
 		self.registered_clients.append(client)
 		if len(self.registered_clients) == int(self.client_max):
-			sleep(5)
-			print("waited for OK message to send, sending out info to peers")
+            # todo: I don't think we need the sleep here, but I'm also not
+            # sure why it was there in the first place
+			# sleep(5)
+			print("sending out info to peers")
 			self.exchange_peer_info()
 
 	def exchange_peer_info(self):
